@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package users;
+
+// Handles all user-related operations
+service UserService {
+    // Fetches a single user id
+    rpc GetUser (UserRequest) returns (UserResponse);
+
+    // Returns a list of all users
+    rpc ListUsers (Empty) returns (UsersResponse);
+}
+
+message Empty {
+  
+}
+
+message UserRequest {
+  int32 id = 1;
+}
+
+message UserResponse {
+  int32 id = 1;
+  string username = 2;
+  string email = 3;
+}
+
+message UsersResponse {
+    repeated UserResponse users = 1;
+}
